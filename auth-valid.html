@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth</title>
+    
+<script>
+    // Password protection script
+function requirePassword() {
+    var password = prompt("Please enter the password to access this page:");
+
+    // Simple password check (Replace 'yourPassword' with your actual password)
+    if (password === 'admin') {
+        alert("Password correct. Redirecting...");
+        window.location.href = "valid.html"; // Redirect to the target page on correct password
+    } else {
+        alert("Incorrect password. Redirecting...");
+        window.location.href = "index.html"; // Redirect to another page on incorrect password
+    }
+}
+
+// Call the function on page load
+window.onload = requirePassword;
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>

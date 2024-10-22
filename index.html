@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketPulse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5px;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 20px;
+            object-fit: contain;
+            margin-right: 1000px;
+            transform: scale(1.5);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+        }
+
+        nav li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .hero {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            position: relative;
+            top: -50px;
+            font-size: 3em;
+            margin-right: 500px;
+            text-align: left;
+            font-weight: bold;
+           
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-top: 5px;
+            margin-bottom: 160px;
+            margin-right: 500px;
+            text-align: left;
+        }
+
+        .hero-content {
+    display: flex; /* Aligns items in a row */
+    align-items: center; /* Vertically centers the text and image */
+    margin-bottom: -150px ;
+   
+     
+}
+
+.hero-content h1 {
+    margin: 0; /* Remove any default margins */
+}
+
+.hero-image {
+    width: 500px;
+    height: 400px; /* Limits the width of the image */
+    margin-left: 300px; /* Adds extra space between the text and image */
+    object-fit: cover; /* Ensures the image is properly contained within its box */
+}
+
+
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: lighter;
+            font-size: 20px;
+        }
+
+        .button1 {
+            background-color: #007bff;
+            color: #fff;
+            margin-left: 650px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .features {
+            background-color: #ffffff56;
+            padding: 50px;
+            text-align: center;
+            justify-content: space-evenly;
+        }
+
+        .features h2 {
+            font-size: 2em;
+            margin-bottom: 50px;
+        }
+
+        .features .feature {
+            display: inline-block;
+            margin: 0 20px;
+            width: 300px;
+            text-align: left;
+        }
+
+        .features .feature h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .features .feature p {
+            font-size: 1em;
+        }
+
+        .testimonials {
+            background-color: #fff;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .testimonial {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: inline-flex;
+            width: 500px;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .testimonial p {
+            font-size: 1em;
+        }
+
+        .testimonial .author {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            color: #000000;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0;
+        }
+
+        .team {
+            background-color: #fff;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .team h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .team-member {
+            display: inline-block;
+            margin: 0 20px;
+            width: 250px;
+            text-align: left;
+        }
+
+        .team-member img {
+            width: 100%;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .team-member h3 {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            font-size: 1em;
+        }
+
+        .Pricing h2 {
+            margin-left: 500px;
+
+        }
+
+        /* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .hero h1,
+    .hero p,
+    .hero-content {
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .hero-image {
+        width: 80%;
+        height: auto;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .features {
+        text-align: center;
+    }
+
+    .features .feature {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .testimonials {
+        padding: 30px;
+    }
+
+    .testimonial {
+        width: 100%;
+    }
+
+    .team-member {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    .logo img {
+        margin-right: 300px; /* Align logo to the left */
+        max-height: 40px; /* Ensure the logo fits within the navbar */
+    }
+
+    .navbar-toggler {
+        position: absolute;
+        right: 20px; /* Position hamburger on the right */
+        top: -30px;
+        border: none;
+    }
+
+    .navbar-collapse {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+        text-align: center;
+        margin-right: 0;
+        margin-top: 70px; /* Ensure H1 is below the navbar */
+    }
+
+    .hero p {
+        font-size: 1em;
+        margin-bottom: 20px;
+        text-align: center;
+        margin-top: 120px; /* Ensure there's space between H1 and P */
+    }
+
+    .hero-content {
+        flex-direction: column;
+        align-items: flex-start; /* Align items to the start (left) */
+    }
+
+    .hero-image {
+        display: none; /* Hide the hero image on small screens */
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+    }
+
+    .button1 {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .features .feature {
+        margin: 0;
+    }
+
+    .team-member {
+        margin: 0 0 20px;
+        width: 100%;
+    }
+
+    nav ul {
+        display: block;
+    }
+
+    nav li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Navbar adjustments for small screens */
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.5em;
+    }
+
+    .hero p {
+        font-size: 0.9em;
+    }
+
+    .button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .button1 {
+        font-size: 16px;
+        padding: 8px 16px;
+        margin-left: 0;
+    }
+
+    .team-member img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.navbar-nav .nav-link {
+    color: #333;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="tickets.jpg" alt="Logo">
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav m-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://paystack.com/pay/v-4i53xtbc">Buy a ticket</a></li>
+                        <li class="nav-item"><a class="nav-link" href="auth-valid.html">Ticket Management</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <hr>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Seamless <span style="color: rgba(29, 29, 190, 0.822);">Event Organization</span></h1>
+                <img src="./img/photo_5_2024-08-28_14-28-44.jpg" alt="Hero Image" class="hero-image">
+            </div>
+            <p>At TicketPulse, we revolutionize event management with our <br> state-of-the-art e-ticketing solution designed for modern needs.<br> Our platform offers seamless, instant ticket generation <br> and secure validation to ensure that every event runs<br> smoothly and efficiently.</p>
+            <a href="GTicket.html" class="button">Get Started</a>
+        </div>
+    </section>
+    <section class="features">
+        <h2> What We Offer </h2>
+        <div class="card-group">
+            <div class="card" style="border: none;">
+                <img src="img/ico1.png" class="card-img-top" alt="..." style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto;">
+                <div class="card-body">
+                    <h5 class="card-title">Instant Ticket Generation</h5>
+                    <p class="card-text">Generate digital tickets instantly, with just a few clicks. Our platform is designed for speed and simplicity, ensuring that your event's ticketing process is as efficient as possible.</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="card" style="border: none;">
+                <img src="img/ico2.png" class="card-img-top" alt="..." style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto;">
+                <div class="card-body">
+                    <h5 class="card-title">Secure Validation</h5>
+                    <p class="card-text">Ensure only valid tickets are accepted with our advanced validation system. Protect your event from fraud and unauthorized access, giving you peace of mind and maintaining the integrity of your attendee list.</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="card" style="border: none;">
+                <img src="img/ico3.png" class="card-img-top" alt="..." style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto;">
+                <div class="card-body">
+                    <h5 class="card-title">Real-Time Analytics</h5>
+                    <p class="card-text">Monitor ticket sales, attendee check-ins, and event performance in real time. Access detailed reports and insights to make informed decisions, optimize your event strategy, and deliver a better experience for your attendees.</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+        
+       
+    </section>
+    <section class="testimonials"> 
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial" style="margin-right: 60px;">
+                <p>"The ticket validation system has streamlined our event check-ins. It's fast, reliable, and incredibly easy to use. We couldn't be happier!"</p>
+                <p class="author">- John Carter, Event Manager at Horizon Events</p>
+            </div>
+            <div class="testimonial">
+                <p>"We've reduced our entry time by half, thanks to this software. The accuracy and efficiency are unmatched. Highly recommend it!"</p>
+                <p class="author">- Lisa Fernandez, Director of Operations at Premier Concerts</p>
+            </div>
+        </div>
+           
+        </div>
+    </section>
+    <section class="team">
+        <div class="container">            
+            <h2>Meet Our Partners</h2>
+            <div class="team-member">
+                <img src="img/nebtech.png" alt="Team Member 1">
+                <h3>Nebulatech Innovations</h3>
+                <p>Parent Company</p>
+            </div>
+            <div class="team-member">
+                <img src="img/fexl.png" alt="Team Member 2">
+                <h3>FEXL</h3>
+                <p>Partner</p>
+            </div>
+            <div class="team-member">
+                <img src="img/buyer.png" alt="Team Member 3">
+                <h3>NMFP</h3>
+                <p>Partner</p>
+            </div>
+        </div>
+    </section>
+   
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TicketPulse. All rights reserved.</p>
+            <p>Contact us: <a href="mailto:Nebulatech.innovations@outlook.com">Nebulatech.innovations@outlook.com</a> | Phone: 08101751349</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

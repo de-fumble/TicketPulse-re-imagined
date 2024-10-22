@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="tickets.jpg" alt="Logo">
+            </div>
+    </header>
+    <div class="container">
+        <h2>Admin Login</h2>
+        <form id="adminLoginForm">
+            <input type="password" id="adminPassword" placeholder="Admin Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div id="loginError"></div>
+    </div>
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Hard-coded admin password (for demonstration purposes)
+            const adminPassword = 'admin123';
+            const enteredPassword = document.getElementById('adminPassword').value;
+
+            if (enteredPassword === adminPassword) {
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                document.getElementById('loginError').innerText = 'Incorrect password. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>

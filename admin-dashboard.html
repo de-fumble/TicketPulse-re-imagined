@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #fff;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust as needed */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-left: 110px;
+            padding: 20px;
+            background-color: #fff;
+            
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            th {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr {
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+                display: block;
+            }
+            td {
+                border: none;
+                border-bottom: 1px solid #ddd;
+                position: relative;
+                padding-left: 50%;
+                text-align: left;
+                white-space: nowrap;
+            }
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 45%;
+                padding-left: 10px;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+        }
+
+        .clear-btn {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .clear-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="tickets.jpg" alt="Logo">
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <button id="clearDashboard" class="clear-btn">Clear Dashboard</button>
+        <h2>Admin Dashboard</h2>
+        <h3>Checked-In Attendees</h3>
+        <table id="attendeesTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Event</th>
+                    <th>Ticket Code</th>
+                    <th>Check-In Time</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const attendeesTableBody = document.querySelector('#attendeesTable tbody');
+            const clearDashboardBtn = document.getElementById('clearDashboard');
+            
+            function loadAttendees() {
+                attendeesTableBody.innerHTML = '';
+                const checkedInAttendees = JSON.parse(localStorage.getItem('checkedInAttendees')) || [];
+
+                checkedInAttendees.forEach(attendee => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${attendee.username}</td>
+                        <td>${attendee.email}</td>
+                        <td>${attendee.event}</td>
+                        <td>${attendee.ticketCode}</td>
+                        <td>${new Date(attendee.checkInTime).toLocaleString()}</td>
+                    `;
+                    attendeesTableBody.appendChild(row);
+                });
+            }
+
+            function clearDashboard() {
+                localStorage.removeItem('checkedInAttendees');
+                loadAttendees();
+            }
+
+            clearDashboardBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear the dashboard? This action cannot be undone.')) {
+                    clearDashboard();
+                }
+            });
+
+            loadAttendees();
+
+            // Reload the page every 10 seconds
+            setInterval(loadAttendees, 10000);
+        });
+    </script>
+</body>
+</html>

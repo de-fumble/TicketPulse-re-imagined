@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="tickets.jpg" alt="Logo">
+            </div>
+    </header>
+    <div class="container">
+        <h2>Generate Ticket</h2>
+        <form id="generateForm">
+            <input type="text" id="username" placeholder="Your Full Name" required>
+            <input type="password" id="Ticket" placeholder="Make Use of letters and numbers to secure your ticket" required>
+            <input type="email" id="Email" placeholder="We will send your ticket code to Your email" required>
+
+            <!-- Dropdown for selecting an event -->
+            <select id="eventSelect" required>
+                <option value="" disabled selected>Select Event</option>
+                <option value="Concert">Concert</option>
+                <option value="Movies">Movies</option>
+                <option value="Conference">Conference</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Sports">Sports Event</option>
+            </select>
+
+            <button type="submit">Generate Ticket Code</button>
+        </form>
+        <div class="admin-login">
+            <button onclick="location.href='index.html'">Back to home</button>
+        </div>
+        
+        <div id="ticketDisplay"></div>
+        
+        
+    </div>
+    <script src="script.js"></script>
+    <script>
+    document.getElementById('generateForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const userPassword = document.getElementById('Ticket').value;
+      const email = document.getElementById('Email').value;
+      const event = document.getElementById('eventSelect').value;
+
+      try {
+        const response = await fetch('http://localhost:3000/generate-ticket', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, email, event, userPassword }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          document.getElementById('ticketDisplay').innerHTML = `Your ticket code is: ${result.ticketCode}`;
+        } else {
+          // Display the error message from the server
+          document.getElementById('ticketDisplay').innerHTML = `Error: ${result.error}`;
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('ticketDisplay').innerHTML = 'An error occurred while generating the ticket.';
+      }
+    });
+    </script>
+</body>
+</html>

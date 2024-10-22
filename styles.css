@@ -1,0 +1,94 @@
+/* styles.css */
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4; /* Light grey background */
+    max-width: 1200px;
+}
+
+/* Container styling */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff; /* White background */
+    border-radius: 0px;
+    
+}
+
+
+
+.logo {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    object-fit: contain;
+    margin-right: 1000px;
+    transform: scale(1.5);
+}
+
+/* Heading styling */
+h2 {
+    text-align: center;
+    color: #007bff; /* Blue text color for headings */
+}
+
+/* Form styling */
+form {
+    margin-bottom: 20px;
+}
+
+/* Input field styling */
+input, select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 50px;
+    border: 1px solid #007bff; /* Blue border for input fields */
+}
+
+/* Button styling */
+button {
+    width: 50%;
+    padding: 10px;
+    background-color: #007bff; /* Blue background for buttons */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block; /* Makes the button a block-level element */
+    margin: 0 auto; /* Centers the block element horizontally */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Display areas styling */
+#ticketDisplay, #validationResult {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333; /* Darker grey text for results */
+}
+
+/* Admin login button styling (if different from other buttons) */
+.admin-login button {
+    background-color: #007bff; /* Blue background */
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-login button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

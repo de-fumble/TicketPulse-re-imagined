@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate Ticket</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles for admin login button */
+        .admin-login {
+            position: absolute; /* Position the div absolutely */
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+        }
+
+        .admin-login button {
+            width: 90px;
+            padding: 10px 20px; /* Adjust padding for the button */
+            background-color: #007bff; /* Blue background for button */
+            color: #fff; /* White text color */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Font size for button text */
+        }
+
+        .admin-login button:hover {
+            background-color: #0056b3; /* Darker blue for hover effect */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="tickets.jpg" alt="Logo">
+            </div>
+            <!-- Admin Login Button -->
+            <div class="admin-login">
+                <button onclick="location.href='admin-login.html'">Admin Login</button>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h2>Validate Ticket</h2>
+        <form id="validateForm">
+            <input type="text" id="ticketInput" placeholder="Enter Your Ticket Code or Security Key" required>
+            <button type="submit">Validate Ticket</button>
+        </form>
+        
+        <div id="validationResult"></div>
+        
+       
+    </div>
+    <script src="validate.js"></script>
+</body>
+</html>

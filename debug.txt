@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title of the webpage -->
+    <title>Ticket System</title>
+    
+    <!-- Linking to the external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Section for generating a ticket -->
+        <h2>Generate Ticket</h2>
+        <form id="generateForm">
+            <!-- Input field for entering the user's name -->
+            <input type="text" id="username" placeholder="Enter your name" required>
+            
+            <!-- Button to submit the form and generate a ticket -->
+            <button type="submit">Generate Ticket</button>
+        </form>
+        
+        <!-- Display area where the generated ticket will be shown -->
+        <div id="ticketDisplay"></div>
+        
+        <!-- Section for validating a ticket -->
+        <h2>Validate Ticket</h2>
+        <form id="validateForm">
+            <!-- Input field for entering the ticket code to be validated -->
+            <input type="text" id="ticketCode" placeholder="Enter ticket code" required>
+            
+            <!-- Button to submit the form and validate the ticket -->
+            <button type="submit">Validate Ticket</button>
+        </form>
+        
+        <!-- Display area where the validation result will be shown -->
+        <div id="validationResult"></div>
+    </div>
+    
+    <!-- Linking to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+/* Basic styling for the entire body */
+body {
+    font-family: Arial, sans-serif; /* Sets the font for the text */
+    padding: 20px; /* Adds padding around the content */
+    background-color: #f4f4f4; /* Sets a light background color */
+}
+
+/* Styling for the container that holds all content */
+.container {
+    max-width: 500px; /* Limits the maximum width of the container */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 20px; /* Adds padding inside the container */
+    background-color: #fff; /* Sets a white background color */
+    border-radius: 8px; /* Rounds the corners of the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+/* Styling for the headings */
+h2 {
+    text-align: center; /* Centers the heading text */
+    color: #333; /* Sets the text color */
+}
+
+/* Basic styling for all forms */
+form {
+    margin-bottom: 20px; /* Adds space below each form */
+}
+
+/* Styling for all input fields */
+input {
+    width: calc(100% - 20px); /* Makes the input take up the full width, minus some space */
+    padding: 10px; /* Adds padding inside the input field */
+    margin: 10px 0; /* Adds space above and below the input */
+    border-radius: 4px; /* Rounds the corners of the input field */
+    border: 1px solid #ccc; /* Adds a light border */
+}
+
+/* Styling for all buttons */
+button {
+    width: 100%; /* Makes the button take up the full width */
+    padding: 10px; /* Adds padding inside the button */
+    background-color: #28a745; /* Sets a green background color */
+    color: #fff; /* Sets the text color to white */
+    border: none; /* Removes the default border */
+    border-radius: 4px; /* Rounds the corners of the button */
+    cursor: pointer; /* Changes the cursor to a pointer when hovering */
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #218838; /* Darkens the background color on hover */
+}
+
+/* Styling for the ticket display and validation result sections */
+#ticketDisplay, #validationResult {
+    text-align: center; /* Centers the text */
+    margin-top: 20px; /* Adds space above these sections */
+    font-size: 18px; /* Increases the font size */
+}
+
+
+// Wait for the form to be submitted to generate a ticket
+document.getElementById('generateForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from refreshing the page
+    
+    // Get the user's name from the input field
+    const username = document.getElementById('username').value;
+    
+    // Generate a unique ticket code using random letters and numbers
+    const ticketCode = `TICKET-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+    
+    // Display the generated ticket information to the user
+    document.getElementById('ticketDisplay').innerHTML = `Name: ${username} <br> Ticket Code: ${ticketCode}`;
+    
+    // Store the ticket code and the associated username in localStorage
+    localStorage.setItem(ticketCode, username);
+});
+
+// Wait for the form to be submitted to validate a ticket
+document.getElementById('validateForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from refreshing the page
+    
+    // Get the ticket code entered by the user
+    const ticketCode = document.getElementById('ticketCode').value;
+    
+    // Check localStorage to see if the ticket code exists
+    const username = localStorage.getItem(ticketCode);
+    
+    // If the ticket exists, show a success message with the username; otherwise, show an error
+    const result = username ? `Ticket Valid! Welcome, ${username}.` : `Invalid Ticket Code!`;
+    document.getElementById('validationResult').innerHTML = result;
+});
